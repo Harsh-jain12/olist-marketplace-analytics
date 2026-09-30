@@ -59,7 +59,7 @@ coefficients change between runs.
 The dataset ends **2018-10-17**. A customer acquired the week before had almost no
 opportunity to return; one acquired in January 2017 had ~21 months.
 
-Reporting "3.12% of customers ever repeated" as *retention* compares incomparable
+Reporting "3.10% of customers ever repeated" as *retention* compares incomparable
 exposure and understates the true rate.
 
 ### Treatment

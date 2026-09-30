@@ -29,8 +29,8 @@ Grades: **A** keep · **B** keep but improve · **C** supporting only · **D** r
 |---|---|---|---|
 | Delivery lateness → review score | **A** | Largest, cleanest association in the dataset. Currently descriptive; earlier χ² was run at item grain | Order grain; Kruskal–Wallis + Dunn; logistic regression with controls; OR, CI, effect size; reverse-causality caveat |
 | First-order review → repeat purchase (null) | **A** | Precise null that contradicts the project's own hypothesis. The strongest interview asset | Re-run at order grain against 90-day censored target; report CI to show precision |
-| `customer_id` identifier trap | **A** | Genuine integrity catch (0.00% vs 3.12%) | None; documented in methodology |
-| Repeat rate | **B** | Right-censored; "3.12% retention" not defensible | 30/60/90/180-day windows; cohort curves; time-to-second-order |
+| `customer_id` identifier trap | **A** | Genuine integrity catch (0.00% vs 3.10%) | None; documented in methodology |
+| Repeat rate | **B** | Right-censored; "3.10% retention" not defensible | 30/60/90/180-day windows; cohort curves; time-to-second-order |
 | Distance → delivery / freight / review | **B** | Item grain. Headline overclaims: review falls only 0.25 pts while freight rises 170% | Order grain; Spearman ρ; partial correlation controlling delivery time. Reframe as a **cost** finding |
 | Seller Pareto | **B** | Correct and striking (top 20% → 83%) but a single curve | Add Gini, HHI, top 1/5/10/20% table with CIs |
 | Freight-to-value ratio | **B** | Real finding (75% vs 7%). Earlier wording said "structurally unprofitable" — unsupported, no cost data | Rename to shipping cost burden; report `SUM(freight)/SUM(price)` alongside mean-of-ratios |

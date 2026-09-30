@@ -63,7 +63,7 @@ GROUP BY order_id;
 
    WHY THIS MATTERS
    A customer acquired in Oct 2018 had days to return; one acquired in
-   Jan 2017 had ~21 months. Calling the raw 3.12% "retention" compares
+   Jan 2017 had ~21 months. Calling the raw 3.10% "retention" compares
    incomparable exposure windows.
 
    TREATMENT
@@ -126,7 +126,7 @@ SELECT
        ELSE NULL END AS repeat_within_180d,
 
   /* uncensored ever-repeat, kept ONLY for backwards comparison with the
-     old 3.12% figure. Do not report this as "retention". */
+     old 3.10% figure. Do not report this as "retention". */
   (s.lifetime_orders > 1)                                          AS ever_repeated
 
 FROM seq s
@@ -278,7 +278,7 @@ FROM `olist.v_fact_orders` WHERE is_first_order;
 
 
 /* ---- V5  The headline correction: censored vs uncensored repeat rate ----
-   The uncensored figure is the old 3.12%. The 90-day figure is the
+   The uncensored figure is the old 3.10%. The 90-day figure is the
    defensible one. Expect the 90d rate to be LOWER (shorter window) but
    computed on a comparable-exposure population. */
 SELECT
