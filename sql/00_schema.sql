@@ -44,7 +44,7 @@ ORDER BY table_name, ordinal_position;
    Expect 99,441 vs 96,096. Keying customer analysis on customer_id reports a
    repeat rate of exactly 0.00%. */
 SELECT
-  COUNT(*)                            AS rows,
+  COUNT(*)                            AS n_rows,
   COUNT(DISTINCT customer_id)         AS order_keys,
   COUNT(DISTINCT customer_unique_id)  AS people
 FROM `olist.customers`;
@@ -53,7 +53,7 @@ FROM `olist.customers`;
    ~52.6 rows per zip prefix. Joining raw multiplies the order table ~50x.
    Always join through v_geo_dedup. */
 SELECT
-  COUNT(*)                                        AS rows,
+  COUNT(*)                                        AS n_rows,
   COUNT(DISTINCT geolocation_zip_code_prefix)     AS zip_prefixes,
   ROUND(COUNT(*) / COUNT(DISTINCT geolocation_zip_code_prefix), 1) AS rows_per_zip
 FROM `olist.geolocation`;

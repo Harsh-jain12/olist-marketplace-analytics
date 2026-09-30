@@ -13,7 +13,7 @@
      - order-level outcomes (review, delivery, repeat) -> v_fact_orders
      - item economics (price, freight per item)        -> v_fact_order_items
 
-   Replace `olist` with your project.dataset, e.g. `blinkit-analysis-503505.olist`.
+   Replace `olist` with your project.dataset, e.g. `YOUR_PROJECT_ID.olist`.
    ============================================================================ */
 
 
@@ -235,7 +235,7 @@ LEFT JOIN `olist.v_customer_order_seq` q ON o.order_id = q.order_id;
 
 /* ---- V1  Grain check: must be exactly one row per order ---- */
 SELECT
-  COUNT(*)                  AS rows,               -- expect 98,666
+  COUNT(*)                  AS n_rows,               -- expect 98,666
   COUNT(DISTINCT order_id)  AS distinct_orders,    -- expect 98,666  (MUST equal rows)
   COUNTIF(order_status = 'delivered') AS delivered -- expect 96,478
 FROM `olist.v_fact_orders`;
@@ -262,7 +262,7 @@ WHERE order_status = 'delivered';
 /* ---- V4  Censoring: how much of each window is usable? ----
    Expected on first orders: 30d 100.0% | 60d 98.5% | 90d 90.5% | 180d 71.7% */
 SELECT
-  '30d'  AS window, COUNTIF(repeat_within_30d  IS NOT NULL) AS usable,
+  '30d'  AS window_label, COUNTIF(repeat_within_30d  IS NOT NULL) AS usable,
   COUNT(*) AS total_first_orders,
   ROUND(100*COUNTIF(repeat_within_30d IS NOT NULL)/COUNT(*),1) AS pct_usable
 FROM `olist.v_fact_orders` WHERE is_first_order
