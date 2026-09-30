@@ -151,6 +151,17 @@ pip install -r requirements.txt
 Notebook outputs are stripped from version control, so notebooks must be run to
 regenerate figures and tables.
 
+**Contributors:** this repository strips notebook outputs with
+[`nbstripout`](https://github.com/kynan/nbstripout) as a git clean filter. The
+`.gitattributes` mapping is committed, but the filter itself lives in `.git/config`,
+which is not — so after cloning, run it once:
+
+```bash
+pip install nbstripout && nbstripout --install
+```
+
+Without this, notebook outputs will be committed on your machine.
+
 ## Data source and licence
 
 The [Olist Brazilian E-Commerce Public Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
