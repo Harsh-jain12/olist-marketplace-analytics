@@ -16,20 +16,31 @@ one question, decomposed, ending in a decision.
 ## What the analysis found
 
 **1. Delivery lateness is strongly associated with poor reviews.**
-Orders delivered past their promised date carry **7.7× the odds of a 1–2 star rating**
-(95% CI [7.1, 8.4]) after controlling for distance, order value, category and
-geography. Large, precise, and robust to specification.
+Orders delivered past their promised date carry **7.80× the odds of a 1–2 star rating**
+(95% CI [7.19, 8.46], n = 95,349) after controlling for delivery time, distance, order
+value, freight, basket size, category and customer state. Large, precise, and robust to
+specification — the estimate is reported from the fully adjusted model, not the raw
+crosstab.
 
-**2. But first-order satisfaction does *not* predict repeat purchase.**
-Logistic regression on each customer's *first* order finds no effect of first-order
-review score on returning: **OR 0.98, 95% CI [0.945, 1.020], p = 0.79**. The interval
-is tight and straddles 1.0, so this is a **precise null** — not an underpowered test.
-The data rules out anything but a negligible effect.
+**2. But first-order satisfaction is a negligible — and reverse-signed — predictor of
+repeat purchase.**
+Logistic regression on each customer's *first* order gives **OR 0.956 per review star,
+95% CI [0.922, 0.991], p = 0.015**. That is statistically significant, but it points the
+*opposite* way to the hypothesis: happier first-time customers came back very slightly
+**less** often. In raw terms, 1-star customers returned at **2.64%** against **2.36%**
+for 5-star customers — a 0.28 percentage-point gap on a ~2.4% base.
+
+The effect size is what matters here: **pseudo R² = 0.0015**, so first-order review score
+explains about **0.15%** of the variation in whether a customer returns. Significance at
+n ≈ 95K is cheap; this is a real but practically empty association. **Satisfaction is not
+a viable retention lever** — and the sign means that raising it would not help even if the
+association were causal.
 
 **3. So Olist has two separate problems, not one causal chain.**
 A **fulfilment** problem that damages satisfaction and drives support cost, and a
-**retention** problem that appears structural — customers do not return regardless of
-how well their order went. **Improving delivery will not fix retention.**
+**retention** problem that appears structural — customers essentially do not return
+whether or not their order went well, and the little signal there is runs backwards.
+**Improving delivery will not fix retention.**
 
 That distinction is the project's central result. It emerged from testing the original
 hypothesis and finding it only half-supported.
@@ -109,8 +120,10 @@ on `v_fact_orders` (one row per order); only item economics use item grain.
 **Repeat purchase is censoring-corrected.** A customer acquired in October 2018 had days
 to return; one acquired in January 2017 had ~21 months. Repeat indicators are three-state
 — TRUE / FALSE / NULL where exposure is insufficient — so each window is computed only on
-customers who could have repeated. The raw "3.12% ever repeated" figure is retained only
-for comparison and is **not** reported as retention.
+customers who could have repeated. The raw "**3.10%** ever repeated" figure is retained
+only for comparison and is **not** reported as retention. The censoring-corrected
+**90-day repeat rate is 2.35% (95% CI [2.25, 2.45]) on 86,445 eligible customers** — that
+is the number to quote.
 
 **The customer identifier trap is documented.** `customer_id` is unique per *order*;
 `customer_unique_id` identifies the person. Analysis keyed on the former reports a
