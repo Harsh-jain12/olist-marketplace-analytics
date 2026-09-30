@@ -279,8 +279,11 @@ FROM `olist.v_fact_orders` WHERE is_first_order;
 
 /* ---- V5  The headline correction: censored vs uncensored repeat rate ----
    The uncensored figure is the old 3.10%. The 90-day figure is the
-   defensible one. Expect the 90d rate to be LOWER (shorter window) but
-   computed on a comparable-exposure population. */
+   defensible one. Expect the 90d rate to be LOWER (2.35%) simply because
+   the window is shorter, but computed on a comparable-exposure population.
+   Expect the 180d rate to be HIGHER (3.57%): the uncensored figure is
+   diluted by customers acquired too recently to have had the opportunity
+   to return. The correction cuts both ways. */
 SELECT
   ROUND(100 * AVG(CAST(ever_repeated AS INT64)), 2)        AS pct_ever_repeated_uncensored,
   ROUND(100 * AVG(CAST(repeat_within_30d  AS INT64)), 2)   AS pct_repeat_30d,

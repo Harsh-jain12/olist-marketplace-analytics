@@ -28,7 +28,7 @@ Grades: **A** keep · **B** keep but improve · **C** supporting only · **D** r
 | Analysis | Grade | Reason | Upgrade required |
 |---|---|---|---|
 | Delivery lateness → review score | **A** | Largest, cleanest association in the dataset. Currently descriptive; earlier χ² was run at item grain | Order grain; Kruskal–Wallis + Dunn; logistic regression with controls; OR, CI, effect size; reverse-causality caveat |
-| First-order review → repeat purchase (null) | **A** | Precise null that contradicts the project's own hypothesis. The strongest interview asset | Re-run at order grain against 90-day censored target; report CI to show precision |
+| First-order review → repeat purchase | **A** | Significant but practically negligible, and reverse-signed: OR 0.956, 95% CI [0.922, 0.991], p = 0.015, pseudo R² = 0.0015. Contradicts the project's own hypothesis — the strongest interview asset | Re-run at order grain against 90-day censored target; report OR, CI and effect size, never the p-value alone |
 | `customer_id` identifier trap | **A** | Genuine integrity catch (0.00% vs 3.10%) | None; documented in methodology |
 | Repeat rate | **B** | Right-censored; "3.10% retention" not defensible | 30/60/90/180-day windows; cohort curves; time-to-second-order |
 | Distance → delivery / freight / review | **B** | Item grain. Headline overclaims: review falls only 0.25 pts while freight rises 170% | Order grain; Spearman ρ; partial correlation controlling delivery time. Reframe as a **cost** finding |
